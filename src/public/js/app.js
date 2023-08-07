@@ -5,6 +5,8 @@ const messageForm = document.querySelector('#message');
 
 function makeMessage(type, payload) {
     const msg = { type, payload };
+    console.log(JSON.stringify(msg));
+
     return JSON.stringify(msg);
 }
 
@@ -36,6 +38,7 @@ function handleNickSubmit(event) {
     event.preventDefault();
     const input = nickForm.querySelector('input');
     socket.send(makeMessage('nickname', input.value));
+    input.value = '';
 }
 
 messageForm.addEventListener('submit', handleSubmit);
