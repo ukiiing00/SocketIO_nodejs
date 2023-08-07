@@ -21,7 +21,12 @@ function onSocketClose() {
 }
 
 wsServer.on('connection', (socket) => {
-    console.log(socket);
+    socket.on('enter_room', (msg, done) => {
+        console.log('msg', msg);
+        setTimeout(() => {
+            done();
+        }, 10000);
+    });
 });
 
 httpServer.listen(3000, handleListen);
