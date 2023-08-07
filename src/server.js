@@ -26,6 +26,7 @@ wss.on('connection', (socket) => {
     console.log('Connected to Browser ✅');
     socket.on('close', onSocketClose);
     socket.on('message', (message) => {
+        console.log(JSON.stringify(message.toString()));
         sockets.forEach((aSocket) => aSocket.send(message.toString()));
     });
 });
